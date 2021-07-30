@@ -1,13 +1,86 @@
 // Assignment Code
 var generateButton = document.querySelector("#generate");
+
+var inputLength = 0;
+var rightLength = false;
+
+var numberInclusion = false;
+var lowerCaseInclusion = false;
+var upperCaseInclusion = false;
+var specialCharacterInclusion = false;
+
 var inputCharacterType = [
-  "uppercase",
-  "lowercase",
   "numbers",
+  "lowercase",
+  "uppercase",
   "special characters",
 ];
-inputLength = 0;
-rightLength = false;
+var possibleNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var possibleLowerCaseLetters = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+
+var possibleUpperCaseLetters = possibleLowerCaseLetters.map(function (i) {
+  return i.toUpperCase();
+});
+
+var possibleSpecialCharacters = [
+  "!",
+  "#",
+  "$",
+  "%",
+  "&",
+  "'",
+  "(",
+  ")",
+  "*",
+  "+",
+  ",",
+  "-",
+  ".",
+  "/",
+  ":",
+  ";",
+  "<",
+  "=",
+  ">",
+  "?",
+  "@",
+  "[",
+  "]",
+  "^",
+  "_",
+  "`",
+  "{",
+  "|",
+  "}",
+  "~",
+];
 
 var createPassword = {
   characterLength: inputLength,
@@ -27,7 +100,7 @@ var createPassword = {
       return;
     }
     while (rightLength === false) {
-      if (inputLength >= 8 && inputLength <= 128) {
+      if (inputLength >= 8 && inputLength <= 128 && inputLength % 1 === 0) {
         window.alert(
           "I see that you want your password to have " +
             inputLength +
